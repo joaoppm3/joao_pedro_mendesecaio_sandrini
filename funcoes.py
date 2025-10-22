@@ -23,3 +23,13 @@ def preenche_frota(frota,nome_navio,linha,coluna,orientacao,tamanho):
     else: 
         frota[nome_navio] = [posicoes]
     return frota
+
+def faz_jogada(tabuleiro,linha,coluna):
+    for i in range(len(tabuleiro)):
+        for j in range(len(tabuleiro[i])):
+            if i == linha and j == coluna: 
+                if tabuleiro[i][j] == 1:
+                    tabuleiro[i][j] = 'X'
+                else:
+                    tabuleiro[i][j] = '-'
+    return tabuleiro
