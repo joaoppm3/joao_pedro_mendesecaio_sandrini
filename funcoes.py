@@ -64,3 +64,22 @@ def afundados(frota,tabuleiro):
             if pn == pa:
                 afundados_total += 1 
     return afundados_total
+
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
+
+    for p in posicoes:
+        if p[0] < 0 or p[0] > 9 or p[1] < 0 or p[1] > 9:
+            return False
+        
+    posicoes_ocupadas = []
+    for tipo in frota:
+        for navio in frota[tipo]:
+            for posicao in navio:
+                posicoes_ocupadas.append(posicao)
+
+    for p in posicoes:
+        if p in posicoes_ocupadas:
+            return False
+
+    return True
